@@ -1,4 +1,4 @@
-class site_mcollective (install_type = 'agent') {
+class site_mcollective ($install_type = 'agent') {
     #Conifguration is defined in hiera copy site_mcollective.yaml to your yaml dir
     $config = hiera('site_mcollective')
     case $install_type { 
@@ -21,7 +21,7 @@ class site_mcollective (install_type = 'agent') {
             class { 'mcollective':
                 client                    => true,
                 middleware                => true,
-                middleware_hosts          => $config['middleware_hosts',
+                middleware_hosts          => $config['middleware_hosts'],
                 middleware_ssl            => true,
                 middleware_password       => $config['activemq_password'],
                 middleware_admin_password => $config['activemq_admin_password'],
@@ -31,7 +31,8 @@ class site_mcollective (install_type = 'agent') {
                 ssl_server_public         => $config['ssl_server_public'],
                 ssl_server_private        => $config['ssl_server_private'],
             }
-            @site_mcollcetive::user { [ $config['users'] ]: }
+            @site_mcollcetive::user { $config['users']: }
+            Site_mcollective::User <|title == $config['users'] |>
         }
         /^(client|console)$/: {
             #Install agent and client (mco)
@@ -47,7 +48,8 @@ class site_mcollective (install_type = 'agent') {
                 ssl_server_public         => $config['ssl_server_public'],
                 ssl_server_private        => $config['ssl_server_private'],
             }
-            @site_mcollcetive::user { [ $config['users'] ]: }
+            @site_mcollcetive::user { $config['users']: }
+            Site_mcollective::User <|title == $config['users'] |>
         }
         default: {
         }
@@ -70,7 +72,7 @@ class site_mcollective (install_type = 'agent') {
 }
 
 
-define site_mcollective::users () {
+define site_mcollective::user () {
     mcollective::user { $title:
         certificate => "puppet:///modules/site_mcollective/user/certs/${title}.pem",
         private_key => "puppet:///modules/site_mcollective/user/keys/${title}.pem",
