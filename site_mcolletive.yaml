@@ -1,0 +1,10 @@
+site_mcollective:
+    middleware_hosts: puppet.example.com 
+    activemq_password: ChangeMe
+    activemq_admin_password: ChangeMeToo
+    ssl_client_certs: puppet:///modules/site_mcollective/user/certs
+    ssl_ca_cert: puppet:///modules/site_mcollective/server/certs/ca.pem
+    ssl_server_public: puppet:///modules/site_mcollective/server/certs/puppet.example.com.pem
+    ssl_server_private: puppet:///modules/site_mcollective/server/keys/puppet.example.com.pem
+    users:
+        - jgreat
