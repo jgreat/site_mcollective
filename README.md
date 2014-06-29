@@ -3,15 +3,15 @@ site_mcollective
 
 Puppet module that's a wrapper to install mcollective.
 
-**Installation:** \
-Clone this repo into your `/etc/puppet/modules` directory.
-
+#####Installation:#####  
+Clone this repo into your `/etc/puppet/modules` directory.  
+  
 NOTE: This module uses hiera with yaml.
   - Copy the `site_mcollective/site_mcollective.yaml` to your yaml directory
   - Add `site_mcolletive` to `hiera.yaml :hirearchy:`. 
   - Restart your puppetmaster (apache2).
 
-**Configuration:**
+#####Configuration:#####
 Modify the `site_mcollective.yaml` file to suit your install.
   - `middleware_hosts:` your puppet master server.
   - `activemq_password:` Change it to something long and random.
@@ -20,7 +20,7 @@ Modify the `site_mcollective.yaml` file to suit your install.
   - `ssl_server_private:` Change key file name to your server name.
   - `users:` remove me and add your users to this list/array.
 
-**Copy Server SSL certs to module**
+######Copy Server SSL certs to module######  
 CA cert
 ```
 cp /var/lib/puppet.example.com/ssl/certs/ca.pem /etc/puppet/modules/site_mcollective/files/server/certs/
@@ -31,9 +31,9 @@ cp /var/lib/puppet.example.com/ssl/certs/puppet.example.com.pem /etc/puppet/modu
 cp /var/lib/puppet.example.com/ssl/private_keys/puppet.example.com.pem /etc/puppet/modules/site_mcollective/files/server/keys/
 ```
 
-**Create user SSL certs and copy to module**
-  Note this user should already exist on the system.
-  - Create the Cert/Key
+######Create user SSL certs and copy to module######  
+Note this user should already exist on the system.  
+Create the Cert/Key
 ```
 puppet cert generate <user>
 ```
