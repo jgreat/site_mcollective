@@ -31,7 +31,7 @@ class site_mcollective ($install_type = 'agent') {
                 ssl_server_public         => $config['ssl_server_public'],
                 ssl_server_private        => $config['ssl_server_private'],
             }
-            @site_mcollcetive::user { $config['users']: }
+            @site_mcollective::user { $config['users']: }
             Site_mcollective::User <|title == $config['users'] |>
         }
         /^(client|console)$/: {
@@ -48,7 +48,7 @@ class site_mcollective ($install_type = 'agent') {
                 ssl_server_public         => $config['ssl_server_public'],
                 ssl_server_private        => $config['ssl_server_private'],
             }
-            @site_mcollcetive::user { $config['users']: }
+            @site_mcollective::user { $config['users']: }
             Site_mcollective::User <|title == $config['users'] |>
         }
         default: {
