@@ -3,7 +3,7 @@ site_mcollective
 
 Puppet module that's a wrapper to install mcollective.
 
-**Installation:**
+**Installation:** \
 Clone this repo into your `/etc/puppet/modules` directory.
 
 NOTE: This module uses hiera with yaml.
