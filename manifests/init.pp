@@ -74,7 +74,7 @@ define site_mcollective::users () {
     mcollective::user { $title:
         certificate => "puppet:///modules/site_mcollective/user/certs/${title}.pem",
         private_key => "puppet:///modules/site_mcollective/user/keys/${title}.pem",
-        require     => User[$title],
+        #require     => User[$title],
     }
     mcollective::user::setting { "$title.plugin.activemq.heartbeat_interval":
         username => $title,
